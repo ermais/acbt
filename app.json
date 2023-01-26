@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Blank Template",
+    "name": "ACBT",
     "slug": "asbt",
     "privacy": "public",
     "sdkVersion": "36.0.0",
@@ -9,12 +9,14 @@
       "android",
       "web"
     ],
-    "android":{
-      "config":{
-        "googleMaps":{
-          "apiKey":"AIzaSyBo6f4pIiTffX6l8x9g2YKeefTP6he0xVk"
+    "android": {
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDxKclIthhfZzruu1SYFjaOkgX5Wyb7H7M"   
         }
-      }
+      },
+      "package": "com.erma.asbt",
+      "versionCode": 1
     },
     "version": "1.0.0",
     "orientation": "portrait",
@@ -32,6 +34,7 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": ""
   }
 }

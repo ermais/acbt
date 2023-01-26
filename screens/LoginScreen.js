@@ -1,10 +1,16 @@
 import React,{Component,useState,useEffect} from 'react'
 import {StyleSheet,View,SafeAreaView,KeyboardAvoidingView,Text} from 'react-native'
-import {Button as PaperButton,TextInput} from 'react-native-paper'
+import {Button as PaperButton,TextInput,ActivityIndicator} from 'react-native-paper'
+import { connect } from 'react-redux'
+import {loginUser} from '../redux/Action'
 
-export default function LoginScreen(props){
+
+
+
+function LoginScreen(props){
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
+
     
     const getEmail =value=>{
         setEmail(value)
@@ -12,12 +18,18 @@ export default function LoginScreen(props){
     const getPassword = value=>{
         setPassword(value)
     }
+    const handleLogin = async ()=>{
+         props.loginUser(email,password,props)
+
+    }
+
+
 
     return (
         <SafeAreaView style={styles.container}>
         <KeyboardAvoidingView behavior="padding" >
             <TextInput 
-            placeholder="Your email"
+            placeholder="email"
             label="Email"
             onChangeText={getEmail}
             value={email}
@@ -31,19 +43,37 @@ export default function LoginScreen(props){
             onChangeText={getPassword}
             style={styles.input}
             />
-        
+
+            
+        {
+            !props.loading ?
+
         <PaperButton
         icon="login"
         children={<Text>login</Text>}
-        onPress={()=>props.navigation.navigate('map')}
+        onPress={handleLogin}
         mode="contained"
         />
+
+        :
+        <ActivityIndicator animating={true} size='large' />
+}
         </KeyboardAvoidingView>
     </SafeAreaView>
 
     )
 }
 
+
+
+const mapStateProps = state =>({
+    user:state.user,
+    loginSuccess:state.loginSuccess,
+    error:state.error,
+    loading:state.loading,
+})
+
+export default connect(mapStateProps,{loginUser})(LoginScreen)
 const styles = StyleSheet.create({
     container:{
         flex:1,

@@ -1,0 +1,56 @@
+"route" : [
+    {
+        "route_name": "kemegenagna pisa",
+        "bus":[
+            {
+                "side_no":"1234",
+                "driver":"1231234"
+            },
+            {
+                "side_no":"3244",
+                "driver":"43535345",
+            }
+        ]
+    },
+    {
+        "route_name": "kearat kilo bole",
+        "bus":{
+
+        }
+    }
+]
+
+
+///// route 2nd way
+
+"route" : [
+    {
+        "route_name":"piyasa",
+        "uid":"24445780ursa"
+    },
+
+]
+
+/////// driver 
+"driver": [
+    {
+        "driver_name":"ermais mesfin",
+        "bus_assigned":"1234",
+    },
+]
+
+
+"bus":[
+    {
+        "side_no":"1234",
+        "route_assigned":"24445780ursa"
+    },
+
+]
+
+"location":{
+    "uid":{
+        "latitude":"23.4344",
+        "longitude":"34.2234",
+    }
+}

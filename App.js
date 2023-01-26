@@ -1,58 +1,49 @@
-import React from 'react';
+import React, {useEffect,useState} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+// import {firebase } from 'firebase'
 import {NavigationContainer} from '@react-navigation/native'
-import {createStackNavigator} from '@react-navigation/stack'
-import {createDrawerNavigator} from '@react-navigation/drawer'
-import LoginScreen from './screens/LoginScreen'
-import SignupScreen from './screens/SignupScreen'
-import MapViewScreen from './screens/MapViewScreen'
-import {Button as PaperButton } from 'react-native-paper'
+import Home from './navigations/HomeNavigation'
+import {Provider} from 'react-redux'
+import Store from './redux/Store'
 
-function SampleView(props){
-  return (
-    <View>
-      <Text>...</Text>
-    </View>
-  )
-}
+//screen
+import HomeScreen from "./screens/HomeScreen";
 
-function drawerComponent(props){
-  return(
-    <View style={{flex:1,justifyContent:'center'}}>
-      <PaperButton
-      icon="login"
-      children={<Text>close</Text>}
-      onPress={()=>props.navigation.navigate('login')}
-      mode="contained"
-      />
-    </View>
-  )
-}
+
 export default function App() {
 
-  const Stack = createStackNavigator()
-  const Draw = createDrawerNavigator()
+  useEffect(()=>{
+  //   const firebaseConfig = {
+  //     apiKey: "AIzaSyBnlPKIPK47PZSCK8gzHRBsQbT33gDzxa8",
+  //     authDomain: "asbt-86606.firebaseapp.com",
+  //     databaseURL: "https://asbt-86606.firebaseio.com",
+  //     projectId: "asbt-86606",
+  //     storageBucket: "asbt-86606.appspot.com",
+  //     messagingSenderId: "489605185854",
+  //     appId: "1:489605185854:web:4b1ee9cdb86bd1dd0bac6f",
+  //     measurementId: "G-4E0438406J"
+  //   };
+  
+  
+  
+  // firebase.initializeApp(firebaseConfig)
+  })
 
-  const Drawer = ()=>
-  <Draw.Navigator drawerContent={drawerComponent}>
-    <Draw.Screen name='map-home' component={MapViewScreen}  />
-    {/* <Draw.Screen name='draw' component={SampleView} /> */}
-  </Draw.Navigator>
   return (
+    <Provider store={Store} >
     <NavigationContainer >
-      <Stack.Navigator initialRouteName="signup" headerMode="none" >
-        <Stack.Screen name="signup" component={SignupScreen} />
-        <Stack.Screen name="login" component={LoginScreen} />
-        <Stack.Screen name="map" component={Drawer} />
-      </Stack.Navigator>
+      <Home />
     </NavigationContainer>
+    </Provider>
+
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
+    flex:1,
+    width:400,
+    backgroundColor: '#ccc',
     alignItems: 'center',
     justifyContent: 'center',
   },
